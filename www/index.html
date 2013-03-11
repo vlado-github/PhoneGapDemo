@@ -10,10 +10,32 @@
      
 		<link rel="stylesheet" type="text/css" href="kitchensink/icons.css" /> 
 		<link rel="stylesheet" type="text/css" href="kitchensink/jq.ui.css" title="volcano"/>
-        
+
         <script type="text/javascript" charset="utf-8" src="ui/jq.ui.min.js"></script>
+        <script src="http://js.pusher.com/1.12/pusher.min.js" type="text/javascript"></script>
 
         <script>
+            // Enable pusher logging - don't include this in production
+            Pusher.log = function (message) {
+                if (window.console && window.console.log) window.console.log(message);
+            };
+
+            // Flash fallback logging - don't include this in production
+            WEB_SOCKET_DEBUG = true;
+
+            var pusher = new Pusher('a247f9dd8328ce03ba6d');
+            var channel = pusher.subscribe('test_channel');
+            channel.bind('my_event', function (data) {
+                var div = $("<div id=\"notification\">"+data+"</div>");
+                $("#header").append(div);
+                //$("#main").append(div);
+                div.bind("click",function(){
+                    $("#notification").hide();
+                    $("#notification").remove();
+                });
+                //alert(data);
+            });
+
             if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
                 $.os.android = true; //let's make it run like an android device
             }
@@ -53,11 +75,11 @@
         <div id="jQUi"> <!-- this is the main container div.  This way, you can have only part of your app use jqUi -->
             <!-- this is the header div at the top -->
             <div id="header">
-                
+
             </div>
             <div id="content">
                 <!-- here is where you can add your panels -->
-                <div title='Welcome' id="main" class="panel">This is a "Hello, world" sample.</div>
+                <div title='Welcome' id="main" class="panel"></div>
                 <div title="Targeting platforms" id="jqmweb" class="panel" data-header="testheader">
 	                <h2 class='expanded' onclick='showHide(this,"jqweb_info");'>Platforms</h2><p id='jqweb_info'>
 		                We wish to support following platforms:</p>
