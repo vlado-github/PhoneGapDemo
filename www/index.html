@@ -26,14 +26,14 @@
             var pusher = new Pusher('a247f9dd8328ce03ba6d');
             var channel = pusher.subscribe('test_channel');
             channel.bind('my_event', function (data) {
-                var div = $("<div id=\"notification\">"+data+"</div>");
-                $("#header").append(div);
+                //var div = $("<div id=\"notification\">"+data+"</div>");
+                //$("#header").append(div);
                 //$("#main").append(div);
-                div.bind("click",function(){
-                    $("#notification").hide();
-                    $("#notification").remove();
-                });
-                //alert(data);
+                //div.bind("click",function(){
+                  //  $("#notification").hide();
+                    //$("#notification").remove();
+                //});
+                alert(data);
             });
 
             if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
