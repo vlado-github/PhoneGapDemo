@@ -23,7 +23,7 @@
             // Flash fallback logging - don't include this in production
             WEB_SOCKET_DEBUG = true;
 
-            var pusher = new Pusher('a247f9dd8328ce03ba6d');
+            var pusher = new Pusher('<APP_KEY>');
             var channel = pusher.subscribe('test_channel');
             channel.bind('my_event', function (data) {
                 //var div = $("<div id=\"notification\">"+data+"</div>");
