@@ -44,9 +44,10 @@
         <script type="text/javascript">
              
             var webRoot = "./";
-            $.ui.autoLaunch = false; //By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen
+            //$.ui.autoLaunch = false;
+            $.ui.backButtonText = "Back";//By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen
             /* This function runs when the body is loaded.*/
-            var init = function () {
+           /* var init = function () {
                     $.ui.backButtonText = "Back";// We override the back button text to always say "Back"
                     window.setTimeout(function () {
                         $.ui.launch(); 
@@ -59,7 +60,7 @@
  
             
             /* This code is used for native apps */
-            var onDeviceReady = function () {
+            /*var onDeviceReady = function () {
                     AppMobi.device.setRotateOrientation("portrait");
                     AppMobi.device.setAutoRotate(false);
                     webRoot = AppMobi.webRoot + "/";
@@ -67,7 +68,7 @@
                     AppMobi.device.hideSplashScreen();
  
             };
-            document.addEventListener("appMobi.device.ready", onDeviceReady, false);
+            document.addEventListener("appMobi.device.ready", onDeviceReady, false);*/
         </script>
     </head>
      
